@@ -7,11 +7,11 @@ import { useChat } from '@ai-sdk/react';
 import { Warning, Terminal } from '@phosphor-icons/react/dist/ssr';
 
 interface DuckChatProps {
-    theme?: 'ugly' | 'pretty';
+    styleContext?: 'ugly' | 'pretty';
     unlimited?: boolean;
 }
 
-export default function DuckChat({ theme = 'pretty', unlimited = false }: DuckChatProps) {
+export default function DuckChat({ styleContext = 'pretty', unlimited = false }: DuckChatProps) {
     const [input, setInput] = useState('');
     const { messages, status, sendMessage, error } = useChat({
         api: '/api/chat',
@@ -51,7 +51,7 @@ export default function DuckChat({ theme = 'pretty', unlimited = false }: DuckCh
     const userMessageCount = messages.filter((m: any) => m.role === 'user').length;
     const isGated = !unlimited && userMessageCount >= 3;
 
-    if (theme === 'ugly') {
+    if (styleContext === 'ugly') {
         return (
             <div className="w-full max-w-2xl mx-auto my-12 border-[6px] border-[#000080] bg-[#c0c0c0] p-1 font-[Courier] shadow-[8px_8px_0_#000]">
 

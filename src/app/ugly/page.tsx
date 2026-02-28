@@ -77,6 +77,9 @@ export default function UglySalesPage() {
                 </p>
 
             </main>
+
+            {/* The Floating AI Duck Component */}
+            <DuckChat styleContext="ugly" />
         </div>
     );
 }
