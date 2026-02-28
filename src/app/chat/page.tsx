@@ -1,8 +1,8 @@
 "use client";
 
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import dynamic from 'next/dynamic';
-import { Terminal, Lightning } from '@phosphor-icons/react/dist/ssr';
+import { Terminal, Lightning, X } from '@phosphor-icons/react/dist/ssr';
 
 const trackEvent = async (event: string, variant: string) => {
     try {
@@ -21,6 +21,8 @@ const DuckChat = dynamic(() => import('@/components/DuckChat'), {
 });
 
 export default function PremiumChatInterface() {
+    const [showBanner, setShowBanner] = useState(true);
+
     useEffect(() => {
         trackEvent('pageview', 'premium_chat');
     }, []);
@@ -28,16 +30,24 @@ export default function PremiumChatInterface() {
     return (
         <div className="min-h-screen bg-zinc-950 text-white font-sans selection:bg-indigo-500/30">
             {/* Global Lead Gen Banner */}
-            <div className="w-full bg-gradient-to-r from-indigo-600 via-purple-600 to-indigo-600 animate-gradient-x text-center py-3 px-4 border-b border-white/10 sticky top-0 z-50">
-                <div className="text-sm font-medium text-white flex flex-col md:flex-row items-center justify-center gap-2 md:gap-4">
-                    <span className="animate-pulse w-2 h-2 rounded-full bg-white hidden sm:block shrink-0"></span>
-                    <span className="flex flex-col sm:flex-row items-center gap-1 sm:gap-2">
-                        <strong>Want autonomous AI conversions on your own site?</strong>
-                        <span className="text-indigo-100 hidden sm:inline">Discover the engine that built this Ducky stunt.</span>
-                    </span>
-                    <a href="https://improve.delights.pro/auth" className="mt-2 md:mt-0 bg-white text-indigo-900 px-5 py-1.5 rounded-full text-xs font-bold uppercase tracking-wider hover:scale-105 active:scale-95 transition-all shadow-lg whitespace-nowrap">Try Improve.Delights →</a>
+            {showBanner && (
+                <div className="w-full bg-gradient-to-r from-indigo-600 via-purple-600 to-indigo-600 animate-gradient-x text-center py-3 px-4 border-b border-white/10 sticky top-0 z-50 flex items-center justify-center relative shadow-lg">
+                    <div className="text-sm font-medium text-white flex flex-col md:flex-row items-center justify-center gap-2 md:gap-4 pr-8">
+                        <span className="animate-pulse w-2 h-2 rounded-full bg-white hidden sm:block shrink-0"></span>
+                        <span className="flex flex-col sm:flex-row items-center gap-1 sm:gap-2">
+                            <strong>Want autonomous AI conversions on your own site?</strong>
+                            <span className="text-indigo-100 hidden sm:inline">Discover the engine that built this Ducky stunt.</span>
+                        </span>
+                        <a href="https://improve.delights.pro/auth" className="mt-2 md:mt-0 bg-white text-indigo-900 px-5 py-1.5 rounded-full text-xs font-bold uppercase tracking-wider hover:scale-105 active:scale-95 transition-all shadow-lg whitespace-nowrap">Try Improve.Delights →</a>
+                    </div>
+                    <button
+                        onClick={() => setShowBanner(false)}
+                        className="absolute right-4 text-white hover:text-indigo-200 transition-colors bg-white/10 hover:bg-white/20 p-1.5 rounded-full"
+                    >
+                        <X weight="bold" size={14} />
+                    </button>
                 </div>
-            </div>
+            )}
 
             <main className="max-w-4xl mx-auto px-4 py-8 md:py-24 relative">
                 {/* Ambient Backgrounds */}
