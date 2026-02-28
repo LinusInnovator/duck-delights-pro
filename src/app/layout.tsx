@@ -49,12 +49,6 @@ export default function RootLayout({
         suppressHydrationWarning
       >
         {children}
-        {process.env.NEXT_PUBLIC_IMPROVE_SITE_KEY && (
-          <Script
-            src={`https://improve.delights.pro/api/sdk?key=${process.env.NEXT_PUBLIC_IMPROVE_SITE_KEY}`}
-            strategy="beforeInteractive"
-          />
-        )}
       </body>
     </html>
   );

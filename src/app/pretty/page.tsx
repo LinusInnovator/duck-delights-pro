@@ -3,6 +3,7 @@
 import React, { useEffect } from 'react';
 import dynamic from 'next/dynamic';
 import Image from 'next/image';
+import Script from 'next/script';
 import { Terminal, Bug, Cpu, Lightning } from '@phosphor-icons/react/dist/ssr';
 
 const trackEvent = async (event: string, variant: string) => {
@@ -179,6 +180,13 @@ export default function PrettyLandingPage() {
                     View The Real-time Stats →
                 </a>
             </div>
+
+            {process.env.NEXT_PUBLIC_IMPROVE_PRETTY_KEY && (
+                <Script
+                    src={`https://improve.delights.pro/api/sdk?key=${process.env.NEXT_PUBLIC_IMPROVE_PRETTY_KEY}`}
+                    strategy="beforeInteractive"
+                />
+            )}
         </div>
     );
 }

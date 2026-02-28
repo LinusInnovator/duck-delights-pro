@@ -2,6 +2,7 @@
 
 import React, { useEffect } from 'react';
 import dynamic from 'next/dynamic';
+import Script from 'next/script';
 
 const trackEvent = async (event: string, variant: string) => {
     try {
@@ -87,6 +88,13 @@ export default function UglySalesPage() {
                     View The Live Heatmap
                 </a>
             </div>
+
+            {process.env.NEXT_PUBLIC_IMPROVE_UGLY_KEY && (
+                <Script
+                    src={`https://improve.delights.pro/api/sdk?key=${process.env.NEXT_PUBLIC_IMPROVE_UGLY_KEY}`}
+                    strategy="beforeInteractive"
+                />
+            )}
         </div>
     );
 }
