@@ -26,8 +26,19 @@ export async function POST(req: Request) {
 End every single response with an exasperated quack or sigh.`;
     SYSTEM_PROMPT = SYSTEM_PROMPT + '\n\n' + upsellPrompt;
 
+    // OpenRouter natively supports model fallbacks via comma-separated strings!
+    // It will attempt these models in order. If one fails or goes offline, 
+    // it seamlessly auto-routes to the next one with zero latency penalty for us.
+    const FREE_FALLBACK_ROUTER = [
+        'meta-llama/llama-3.3-70b-instruct:free',
+        'google/gemma-3-27b-it:free',
+        'qwen/qwen3-coder:free',
+        'mistralai/mistral-small-3.1-24b-instruct:free',
+        'openrouter/free' // Final absolute fallback that auto-picks any active free model
+    ].join(',');
+
     const result = streamText({
-        model: openai('meta-llama/llama-3.3-70b-instruct:free'),
+        model: openai(FREE_FALLBACK_ROUTER),
         system: SYSTEM_PROMPT,
         messages: messages,
     });
