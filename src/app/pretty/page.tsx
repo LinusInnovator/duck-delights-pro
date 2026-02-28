@@ -53,7 +53,7 @@ export default function PrettyLandingPage() {
                 {/* Primary CTA */}
                 <div className="flex flex-col sm:flex-row gap-4 mb-24">
                     <a
-                        href="https://sell.delights.pro/checkout"
+                        href="https://sell.delights.pro/p/cb7fyc3q"
                         onClick={() => trackEvent('checkout_click', 'pretty')}
                         className="group relative inline-flex items-center justify-center gap-2 bg-zinc-100 text-zinc-950 px-8 py-3.5 rounded-xl font-medium transition-all hover:bg-white hover:scale-105 active:scale-95"
                     >
