@@ -2,6 +2,7 @@
 
 import React, { useEffect } from 'react';
 import dynamic from 'next/dynamic';
+import Image from 'next/image';
 import { Terminal, Bug, Cpu, Lightning } from '@phosphor-icons/react/dist/ssr';
 
 const trackEvent = async (event: string, variant: string) => {
@@ -34,8 +35,21 @@ export default function PrettyLandingPage() {
 
             <main className="max-w-5xl mx-auto px-6 py-24 relative z-10 flex flex-col items-center text-center">
 
+                {/* Hero Asset */}
+                <div className="relative w-48 h-48 md:w-64 md:h-64 mb-6 z-20 mx-auto transition-transform duration-700 hover:scale-105 hover:-translate-y-2">
+                    {/* Subtle glow effect behind ducky */}
+                    <div className="absolute inset-10 bg-yellow-400/20 blur-[50px] rounded-full pointer-events-none" />
+                    <Image
+                        src="/ducky.png"
+                        alt="The Autonomous Rubber Duck"
+                        fill
+                        className="object-contain drop-shadow-[0_20px_30px_rgba(0,0,0,0.5)]"
+                        priority
+                    />
+                </div>
+
                 {/* Badge */}
-                <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-zinc-900 border border-zinc-800 text-xs text-zinc-400 mb-12 ring-1 ring-white/5 shadow-2xl">
+                <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-zinc-900 border border-zinc-800 text-xs text-zinc-400 mb-8 ring-1 ring-white/5 shadow-2xl">
                     <span className="w-2 h-2 rounded-full bg-indigo-500 animate-pulse" />
                     Ship faster, debug smarter
                 </div>
