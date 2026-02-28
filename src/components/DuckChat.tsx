@@ -67,16 +67,33 @@ export default function DuckChat({ styleContext = 'pretty', unlimited = false }:
 
                 {/* Chat Area */}
                 <div className="bg-white border-2 border-l-[#808080] border-t-[#808080] border-r-white border-b-white h-[400px] overflow-y-auto p-4 mb-2 text-left text-[#000080] whitespace-pre-wrap">
-                    <div className="mb-4">
-                        <strong>[SYSTEM_DUCK.BAT]:</strong> *Sigh*. What broke now? Paste your terrible code below so I can fix it for you. (Limits: 3 queries).
+                    <div className="mb-4 flex items-start gap-3">
+                        <div className="w-12 h-12 flex-shrink-0 border-2 border-black bg-[#c0c0c0] p-0.5">
+                            <img src="/ducky.png" alt="Duck" className="w-full h-full object-cover" />
+                        </div>
+                        <div>
+                            <strong>[SYSTEM_DUCK.BAT]:</strong> *Sigh*. What broke now? Paste your terrible code below so I can fix it for you. (Limits: 3 queries).
+                        </div>
                     </div>
 
                     {messages.map((m: any) => (
                         <div key={m.id} className="mb-4 leading-tight">
-                            <strong className={m.role === 'user' ? 'text-black' : 'text-red-700'}>
-                                {m.role === 'user' ? 'YOU:' : '[DUCK_RESPONSE]:'}
-                            </strong>
-                            {' '}{getMessageText(m)}
+                            {m.role === 'user' ? (
+                                <>
+                                    <strong className="text-black">YOU:</strong>{' '}
+                                    {getMessageText(m)}
+                                </>
+                            ) : (
+                                <div className="flex items-start gap-3 mt-4">
+                                    <div className="w-10 h-10 flex-shrink-0 border-2 border-black bg-[#c0c0c0] p-0.5 mt-1">
+                                        <img src="/ducky.png" alt="Duck" className="w-full h-full object-cover" />
+                                    </div>
+                                    <div className="flex-1">
+                                        <strong className="text-red-700">[DUCK_RESPONSE]:</strong><br />
+                                        {getMessageText(m)}
+                                    </div>
+                                </div>
+                            )}
                         </div>
                     ))}
                     {isLoading && <div className="animate-pulse">LOADING_GENIUS_REPLY.DLL...</div>}
