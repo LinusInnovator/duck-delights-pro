@@ -65,11 +65,11 @@ export default function UglySalesPage() {
                 </h3>
 
                 <a
-                    href="https://sell.delights.pro/checkout"
+                    href="https://sell.delights.pro/p/cb7fyc3q"
                     onClick={() => trackEvent('checkout_click', 'ugly')}
-                    className="inline-block bg-[#00ff00] hover:bg-yellow-400 text-black text-4xl font-black uppercase p-8 rounded-none border-b-8 border-r-8 border-black transform active:translate-y-2 active:border-b-0 active:border-r-0 transition-all"
+                    className="animate-pulse bg-[#00ff00] text-black border-[4px] border-[#00ff00] px-4 py-2 font-black uppercase inline-block hover:bg-black hover:text-[#00ff00] hover:border-[#00ff00]"
                 >
-                    &gt;&gt; YES! GIMME MY DUCK FOR JUST $5 &lt;&lt;
+                    CLICK HERE TO DOWNLOAD DUCK.PROMPT ($5)
                 </a>
 
                 <p className="mt-8 text-sm italic font-bold">

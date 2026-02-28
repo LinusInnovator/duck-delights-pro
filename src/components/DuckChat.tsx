@@ -107,7 +107,7 @@ export default function DuckChat({ styleContext = 'pretty', unlimited = false }:
                     <div className="bg-red-600 text-yellow-300 font-black p-4 text-center border-4 border-black">
                         <Warning className="w-8 h-8 mx-auto mb-2 animate-bounce" />
                         QUACK! DEMO LIMIT REACHED. BUY THE DUCK TO CONTINUE.
-                        <a href="https://sell.delights.pro/checkout" className="block mt-2 bg-yellow-300 text-red-600 border-2 border-black p-2 hover:bg-black hover:text-white">
+                        <a href="https://sell.delights.pro/p/cb7fyc3q" className="block mt-2 bg-yellow-300 text-red-600 border-2 border-black p-2 hover:bg-black hover:text-white">
                             =&gt; CLICK HERE TO BUY LICENSE NOW &lt;=
                         </a>
                     </div>
@@ -202,7 +202,7 @@ export default function DuckChat({ styleContext = 'pretty', unlimited = false }:
                         You've experienced 3 live debugger interactions. To unlock the unlimited <code>Duck.prompt</code> license for your IDE, initialize checkout.
                     </p>
                     <a
-                        href="https://sell.delights.pro/checkout"
+                        href="https://sell.delights.pro/p/cb7fyc3q"
                         className="inline-flex items-center justify-center bg-indigo-500 text-white px-8 py-3 rounded-lg font-medium hover:bg-indigo-400 transition-colors shadow-[0_0_20px_rgba(99,102,241,0.4)]"
                     >
                         Unlock Full License ($5)

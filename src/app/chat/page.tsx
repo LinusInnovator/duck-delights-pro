@@ -88,7 +88,7 @@ export default function PremiumChatInterface() {
                         Ducky doesn't love the open web. For maximum hostility and performance, use the Master prompt you bought directly in your state-of-the-art IDE.
                     </p>
                     <p className="text-xs text-zinc-600">
-                        (Free-loading?! No problemo, atone your sins here: <a href="https://sell.delights.pro/checkout" className="text-indigo-400/80 hover:text-indigo-300 underline underline-offset-2 transition-colors">buy the official license</a>).
+                        (Free-loading?! No problemo, atone your sins here: <a href="https://duck.delights.pro/pretty" className="text-indigo-400/80 hover:text-indigo-300 underline underline-offset-2 transition-colors">buy the official license</a>).
                     </p>
                 </div>
 

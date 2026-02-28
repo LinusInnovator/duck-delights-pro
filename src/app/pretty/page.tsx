@@ -146,9 +146,9 @@ export default function PrettyLandingPage() {
                         <h2 className="text-3xl md:text-4xl font-bold text-zinc-100 mb-6">Stop guessing. Start fixing.</h2>
                         <p className="text-zinc-400 mb-8 max-w-lg mx-auto">Join thousands of developers using the AI Rubber Duck to slash debugging time by 80%.</p>
                         <a
-                            href="https://sell.delights.pro/checkout"
+                            href="https://sell.delights.pro/p/cb7fyc3q"
                             onClick={() => trackEvent('checkout_click', 'pretty')}
-                            className="inline-flex items-center justify-center bg-indigo-500 hover:bg-indigo-400 text-white px-8 py-4 rounded-xl font-bold transition-all shadow-[0_0_30px_rgba(99,102,241,0.3)] hover:shadow-[0_0_40px_rgba(99,102,241,0.5)] hover:-translate-y-1"
+                            className="mx-auto mt-6 bg-white shrink-0 text-indigo-950 font-bold px-8 py-4 rounded-full flex items-center gap-2 hover:scale-105 active:scale-95 transition-all shadow-xl shadow-indigo-500/20"
                         >
                             Get Unlimited License — $5
                         </a>
