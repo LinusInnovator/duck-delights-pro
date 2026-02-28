@@ -82,6 +82,16 @@ export default function PremiumChatInterface() {
                     <DuckChat styleContext="pretty" unlimited={true} />
                 </div>
 
+                <div className="mt-6 text-center max-w-xl mx-auto space-y-2">
+                    <p className="text-sm text-zinc-500">
+                        <span className="text-indigo-400/80 font-mono text-xs mr-2">*QUACK*</span>
+                        Ducky doesn't love the open web. For maximum hostility and performance, use the Master prompt you bought directly in your state-of-the-art IDE.
+                    </p>
+                    <p className="text-xs text-zinc-600">
+                        (Free-loading?! No problemo, atone your sins here: <a href="https://sell.delights.pro/checkout" className="text-indigo-400/80 hover:text-indigo-300 underline underline-offset-2 transition-colors">buy the official license</a>).
+                    </p>
+                </div>
+
                 {/* Lead Gen Footer */}
                 <div className="mt-16 md:mt-24 p-6 md:p-12 rounded-3xl bg-gradient-to-br from-indigo-900/40 to-zinc-900 border border-indigo-500/20 text-center relative overflow-hidden z-10">
                     <div className="absolute top-0 right-0 w-64 h-64 bg-purple-500/10 blur-[80px] rounded-full pointer-events-none" />
