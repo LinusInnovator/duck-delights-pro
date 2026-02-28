@@ -27,7 +27,7 @@ End every single response with an exasperated quack or sigh.`;
     SYSTEM_PROMPT = SYSTEM_PROMPT + '\n\n' + upsellPrompt;
 
     const result = streamText({
-        model: openai('google/gemini-2.0-flash-exp:free'),
+        model: openai('meta-llama/llama-3.3-70b-instruct:free'),
         system: SYSTEM_PROMPT,
         messages: messages,
     });
