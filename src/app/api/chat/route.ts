@@ -27,7 +27,7 @@ End every single response with an exasperated quack or sigh.`;
     SYSTEM_PROMPT = SYSTEM_PROMPT + '\n\n' + upsellPrompt;
 
     const result = streamText({
-        model: openai('gpt-4o-mini'),
+        model: openai('google/gemini-2.0-flash-exp:free'),
         system: SYSTEM_PROMPT,
         messages: messages,
     });
