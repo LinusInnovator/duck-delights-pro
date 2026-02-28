@@ -106,7 +106,7 @@ export default function PrettyLandingPage() {
                         <h2 className="text-3xl font-bold bg-gradient-to-r from-indigo-400 to-purple-400 text-transparent bg-clip-text">Experience the Autonomy.</h2>
                         <p className="text-zinc-400 mt-2">Paste a real bug below. The AI Duck will diagnose it live.</p>
                     </div>
-                    <DuckChat theme="pretty" />
+                    <DuckChat styleContext="pretty" />
                 </section>
 
                 {/* Testimonial Section */}
@@ -157,6 +157,14 @@ export default function PrettyLandingPage() {
                 </section>
 
             </main>
+
+            {/* Floating Meta Banner */}
+            <div className="fixed bottom-0 left-0 right-0 bg-indigo-600/90 text-white p-3 text-center z-50 font-medium text-sm backdrop-blur-md border-t border-indigo-500/50 flex flex-col sm:flex-row items-center justify-center gap-2 sm:gap-4">
+                <span><span className="font-bold flex items-center inline-flex gap-2"><div className="w-2 h-2 rounded-full bg-white animate-pulse" /> LIVE DATA:</span> This beautiful layout is currently losing an AI-driven A/B test.</span>
+                <a href="https://improve.delights.pro/admin/sites/duck/heatmap" className="bg-white/20 hover:bg-white text-white hover:text-indigo-900 px-4 py-1.5 rounded-full transition-colors text-xs font-bold uppercase tracking-wider backdrop-blur-md">
+                    View The Real-time Stats →
+                </a>
+            </div>
         </div>
     );
 }

@@ -80,6 +80,13 @@ export default function UglySalesPage() {
 
             {/* The Floating AI Duck Component */}
             <DuckChat styleContext="ugly" />
+            {/* Floating Meta Banner */}
+            <div className="fixed bottom-0 left-0 right-0 bg-black text-[#00ff00] p-3 text-center border-t-4 border-[#00ff00] z-50 font-bold text-sm md:text-base">
+                [LIVE DATA]: This 1999 layout is currently winning an AI-driven A/B test.
+                <a href="https://improve.delights.pro/admin/sites/duck/heatmap" className="bg-[#00ff00] text-black px-2 ml-2 hover:bg-white hover:text-red-600 transition-colors uppercase cursor-pointer">
+                    View The Live Heatmap
+                </a>
+            </div>
         </div>
     );
 }
