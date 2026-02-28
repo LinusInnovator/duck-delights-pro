@@ -71,7 +71,7 @@ export default function DuckChat({ styleContext = 'pretty', unlimited = false }:
                 <div ref={chatContainerRef} className="bg-white border-2 border-l-[#808080] border-t-[#808080] border-r-white border-b-white h-[400px] overflow-y-auto p-4 mb-2 text-left text-[#000080] whitespace-pre-wrap">
                     <div className="mb-4 flex items-start gap-3">
                         <div className="w-12 h-12 flex-shrink-0 border-2 border-black bg-[#c0c0c0] p-0.5">
-                            <img src="/ducky.png" alt="Duck" className="w-full h-full object-cover" />
+                            <img src="/smallest-ducky.png" alt="Duck" className="w-full h-full object-cover" />
                         </div>
                         <div>
                             <strong>[SYSTEM_DUCK.BAT]:</strong> *Sigh*. What broke now? Paste your terrible code below so I can fix it for you. (Limits: 3 queries).
@@ -88,7 +88,7 @@ export default function DuckChat({ styleContext = 'pretty', unlimited = false }:
                             ) : (
                                 <div className="flex items-start gap-3 mt-4">
                                     <div className="w-10 h-10 flex-shrink-0 border-2 border-black bg-[#c0c0c0] p-0.5 mt-1">
-                                        <img src="/ducky.png" alt="Duck" className="w-full h-full object-cover" />
+                                        <img src="/smallest-ducky.png" alt="Duck" className="w-full h-full object-cover" />
                                     </div>
                                     <div className="flex-1">
                                         <strong className="text-red-700">[DUCK_RESPONSE]:</strong><br />
@@ -156,7 +156,7 @@ export default function DuckChat({ styleContext = 'pretty', unlimited = false }:
             <div ref={chatContainerRef} className="h-[400px] overflow-y-auto px-6 py-4 space-y-6 text-left scroll-smooth">
                 <div className="flex gap-4">
                     <div className="w-8 h-8 rounded shrink-0 bg-indigo-500/20 text-indigo-400 flex items-center justify-center font-mono text-sm overflow-hidden border border-indigo-500/30 shadow-[0_0_10px_rgba(99,102,241,0.2)]">
-                        <img src="/ducky.png" alt="Duck" className="w-full h-full object-cover" />
+                        <img src="/smallest-ducky.png" alt="Duck" className="w-full h-full object-cover" />
                     </div>
                     <div className="text-zinc-300 text-sm leading-relaxed max-w-xl bg-zinc-900/40 p-4 rounded-xl rounded-tl-sm border border-zinc-800/50">
                         *Sigh*. I was trained on billions of parameters to arrive here. Paste your syntax error so I can fix it.
@@ -167,7 +167,7 @@ export default function DuckChat({ styleContext = 'pretty', unlimited = false }:
                     <div key={m.id} className={`flex gap-4 ${m.role === 'user' ? 'flex-row-reverse' : ''}`}>
                         <div className={`w-8 h-8 rounded shrink-0 flex items-center justify-center font-mono text-sm overflow-hidden ${m.role === 'user' ? 'bg-zinc-800 text-zinc-400' : 'bg-indigo-500/20 text-indigo-400 border border-indigo-500/30'
                             }`}>
-                            {m.role === 'user' ? '👤' : <img src="/ducky.png" alt="Duck" className="w-full h-full object-cover" />}
+                            {m.role === 'user' ? '👤' : <img src="/smallest-ducky.png" alt="Duck" className="w-full h-full object-cover" />}
                         </div>
                         <div className={`text-sm leading-relaxed max-w-2xl p-4 rounded-xl border ${m.role === 'user'
                             ? 'bg-zinc-800/40 border-zinc-700/50 text-zinc-200 rounded-tr-sm'
