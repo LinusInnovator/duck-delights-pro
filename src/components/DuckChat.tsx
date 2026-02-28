@@ -136,8 +136,8 @@ export default function DuckChat({ styleContext = 'pretty', unlimited = false }:
             {/* Chat Area */}
             <div className="h-[400px] overflow-y-auto px-6 py-4 space-y-6 text-left">
                 <div className="flex gap-4">
-                    <div className="w-8 h-8 rounded shrink-0 bg-indigo-500/20 text-indigo-400 flex items-center justify-center font-mono text-sm">
-                        🦆
+                    <div className="w-8 h-8 rounded shrink-0 bg-indigo-500/20 text-indigo-400 flex items-center justify-center font-mono text-sm overflow-hidden border border-indigo-500/30 shadow-[0_0_10px_rgba(99,102,241,0.2)]">
+                        <img src="/ducky.png" alt="Duck" className="w-full h-full object-cover" />
                     </div>
                     <div className="text-zinc-300 text-sm leading-relaxed max-w-xl bg-zinc-900/40 p-4 rounded-xl rounded-tl-sm border border-zinc-800/50">
                         *Sigh*. I was trained on billions of parameters to arrive here. Paste your syntax error so I can fix it.
@@ -146,9 +146,9 @@ export default function DuckChat({ styleContext = 'pretty', unlimited = false }:
 
                 {messages.map((m: any) => (
                     <div key={m.id} className={`flex gap-4 ${m.role === 'user' ? 'flex-row-reverse' : ''}`}>
-                        <div className={`w-8 h-8 rounded shrink-0 flex items-center justify-center font-mono text-sm ${m.role === 'user' ? 'bg-zinc-800 text-zinc-400' : 'bg-indigo-500/20 text-indigo-400'
+                        <div className={`w-8 h-8 rounded shrink-0 flex items-center justify-center font-mono text-sm overflow-hidden ${m.role === 'user' ? 'bg-zinc-800 text-zinc-400' : 'bg-indigo-500/20 text-indigo-400 border border-indigo-500/30'
                             }`}>
-                            {m.role === 'user' ? '👤' : '🦆'}
+                            {m.role === 'user' ? '👤' : <img src="/ducky.png" alt="Duck" className="w-full h-full object-cover" />}
                         </div>
                         <div className={`text-sm leading-relaxed max-w-2xl p-4 rounded-xl border ${m.role === 'user'
                             ? 'bg-zinc-800/40 border-zinc-700/50 text-zinc-200 rounded-tr-sm'
