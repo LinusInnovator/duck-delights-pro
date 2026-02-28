@@ -40,11 +40,13 @@ export default function DuckChat({ styleContext = 'pretty', unlimited = false }:
         return '...';
     };
 
-    const endOfMessagesRef = useRef<HTMLDivElement>(null);
+    const chatContainerRef = useRef<HTMLDivElement>(null);
 
-    // Scroll to bottom on new message
+    // Scroll to bottom on new message without moving the entire window
     useEffect(() => {
-        endOfMessagesRef.current?.scrollIntoView({ behavior: 'smooth' });
+        if (chatContainerRef.current) {
+            chatContainerRef.current.scrollTop = chatContainerRef.current.scrollHeight;
+        }
     }, [messages]);
 
     // Check limit (only count user messages)
@@ -66,7 +68,7 @@ export default function DuckChat({ styleContext = 'pretty', unlimited = false }:
                 </div>
 
                 {/* Chat Area */}
-                <div className="bg-white border-2 border-l-[#808080] border-t-[#808080] border-r-white border-b-white h-[400px] overflow-y-auto p-4 mb-2 text-left text-[#000080] whitespace-pre-wrap">
+                <div ref={chatContainerRef} className="bg-white border-2 border-l-[#808080] border-t-[#808080] border-r-white border-b-white h-[400px] overflow-y-auto p-4 mb-2 text-left text-[#000080] whitespace-pre-wrap">
                     <div className="mb-4 flex items-start gap-3">
                         <div className="w-12 h-12 flex-shrink-0 border-2 border-black bg-[#c0c0c0] p-0.5">
                             <img src="/ducky.png" alt="Duck" className="w-full h-full object-cover" />
@@ -97,7 +99,7 @@ export default function DuckChat({ styleContext = 'pretty', unlimited = false }:
                         </div>
                     ))}
                     {isLoading && <div className="animate-pulse">LOADING_GENIUS_REPLY.DLL...</div>}
-                    <div ref={endOfMessagesRef} />
+                    {isLoading && <div className="animate-pulse">LOADING_GENIUS_REPLY.DLL...</div>}
                 </div>
 
                 {/* Input Area */}
@@ -151,7 +153,7 @@ export default function DuckChat({ styleContext = 'pretty', unlimited = false }:
             </div>
 
             {/* Chat Area */}
-            <div className="h-[400px] overflow-y-auto px-6 py-4 space-y-6 text-left">
+            <div ref={chatContainerRef} className="h-[400px] overflow-y-auto px-6 py-4 space-y-6 text-left scroll-smooth">
                 <div className="flex gap-4">
                     <div className="w-8 h-8 rounded shrink-0 bg-indigo-500/20 text-indigo-400 flex items-center justify-center font-mono text-sm overflow-hidden border border-indigo-500/30 shadow-[0_0_10px_rgba(99,102,241,0.2)]">
                         <img src="/ducky.png" alt="Duck" className="w-full h-full object-cover" />
@@ -189,7 +191,6 @@ export default function DuckChat({ styleContext = 'pretty', unlimited = false }:
                         </div>
                     </div>
                 )}
-                <div ref={endOfMessagesRef} />
             </div>
 
             {/* Input Area */}
