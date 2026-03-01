@@ -2,8 +2,12 @@ import { redirect } from 'next/navigation';
 
 export const dynamic = 'force-dynamic';
 
-export default async function Home() {
+export default async function Home({ searchParams }: { searchParams: Promise<{ [key: string]: string | string[] | undefined }> }) {
   let isUgly = false; // default fallback
+
+  const params = await searchParams;
+  const queryString = new URLSearchParams(params as Record<string, string>).toString();
+  const search = queryString ? `&${queryString}` : '';
 
   try {
     const apiKey = process.env.IMPROVE_API_KEY;
@@ -49,8 +53,8 @@ export default async function Home() {
   // To properly track the variant assigned, we normally would set a cookie or pass it in the URL
   // For this simple redirect, we append it so the page can track it.
   if (isUgly) {
-    redirect('/ugly?variant=challenger');
+    redirect(`/ugly?variant=challenger${search}`);
   } else {
-    redirect('/pretty?variant=champion');
+    redirect(`/pretty?variant=champion${search}`);
   }
 }

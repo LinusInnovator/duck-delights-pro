@@ -69,9 +69,13 @@ export default function PrettyLandingPage() {
                 <div className="flex flex-col sm:flex-row gap-4 mb-24">
                     <a
                         href="https://sell.delights.pro/p/cb7fyc3q"
-                        onClick={() => trackEvent('checkout_click', 'pretty')}
-                        className="group relative inline-flex items-center justify-center gap-2 bg-zinc-100 text-zinc-950 px-8 py-3.5 rounded-xl font-medium transition-all hover:bg-white hover:scale-105 active:scale-95"
-                    >
+                        onClick={() => {
+                            trackEvent('checkout_click', 'pretty');
+                            if (typeof window !== 'undefined' && (window as any).improve?.convert) {
+                                (window as any).improve.convert({ value: 5 });
+                            }
+                        }}
+                        className="group relative inline-flex items-center justify-center gap-2 bg-zinc-100 text-zinc-950 px-8 py-3.5 rounded-xl font-medium transition-all hover:bg-white hover:scale-105 active:scale-95"                    >
                         <Terminal weight="bold" className="w-5 h-5" />
                         Initialize License ($5)
                     </a>
@@ -162,7 +166,12 @@ export default function PrettyLandingPage() {
                         <p className="text-zinc-400 mb-8 max-w-lg mx-auto">Join thousands of developers using the AI Rubber Duck to slash debugging time by 80%.</p>
                         <a
                             href="https://sell.delights.pro/p/cb7fyc3q"
-                            onClick={() => trackEvent('checkout_click', 'pretty')}
+                            onClick={() => {
+                                trackEvent('checkout_click', 'pretty');
+                                if (typeof window !== 'undefined' && (window as any).improve?.convert) {
+                                    (window as any).improve.convert({ value: 5 });
+                                }
+                            }}
                             className="mx-auto mt-6 bg-white shrink-0 text-indigo-950 font-bold px-8 py-4 rounded-full flex items-center gap-2 hover:scale-105 active:scale-95 transition-all shadow-xl shadow-indigo-500/20"
                         >
                             Get Unlimited License — $5

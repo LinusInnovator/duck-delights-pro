@@ -67,7 +67,12 @@ export default function UglySalesPage() {
 
                 <a
                     href="https://sell.delights.pro/p/cb7fyc3q"
-                    onClick={() => trackEvent('checkout_click', 'ugly')}
+                    onClick={() => {
+                        trackEvent('checkout_click', 'ugly');
+                        if (typeof window !== 'undefined' && (window as any).improve?.convert) {
+                            (window as any).improve.convert({ value: 5 });
+                        }
+                    }}
                     className="animate-pulse bg-[#00ff00] text-black border-[4px] border-[#00ff00] px-4 py-2 font-black uppercase inline-block hover:bg-black hover:text-[#00ff00] hover:border-[#00ff00]"
                 >
                     CLICK HERE TO DOWNLOAD DUCK.PROMPT ($5)
