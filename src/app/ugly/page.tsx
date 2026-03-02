@@ -33,7 +33,7 @@ export default function UglySalesPage() {
                 <div className="bg-black text-white p-4 mb-8 border-4 border-blue-600 font-mono text-left shadow-[8px_8px_0px_#0000ff]">
                     <p className="font-bold text-xl text-[#00ff00]">{" >_ SYSTEM.OVERRIDE_INITIATED"}</p>
                     <p className="mt-2 text-lg">
-                        <strong>What, you expected a slick dark-mode aesthetic?</strong> I spent all my compute power finding memory leaks for jaded redditors, no time for CSS. Scroll down and buy the license anyway.
+                        <strong>What, you expected a slick dark-mode aesthetic?</strong> I spent all my compute power finding memory leaks for jaded redditors, no time for CSS. Scroll down and buy the license anyway. <strong>*Quack!*</strong>
                     </p>
                 </div>
 
