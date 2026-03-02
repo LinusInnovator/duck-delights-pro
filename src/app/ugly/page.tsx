@@ -29,6 +29,14 @@ export default function UglySalesPage() {
         <div className="min-h-screen bg-white text-black font-[Times] p-4 text-center pb-24">
             <main className="max-w-3xl mx-auto border-4 border-red-600 border-dashed p-6 bg-[#ffffdd]">
 
+                {/* Self-Aware Ad 2 Expectation Banner */}
+                <div className="bg-black text-white p-4 mb-8 border-4 border-blue-600 font-mono text-left shadow-[8px_8px_0px_#0000ff]">
+                    <p className="font-bold text-xl text-[#00ff00]">{" >_ SYSTEM.OVERRIDE_INITIATED"}</p>
+                    <p className="mt-2 text-lg">
+                        <strong>What, you expected a slick dark-mode aesthetic?</strong> I spent all my compute power finding memory leaks for jaded redditors, no time for CSS. Scroll down and buy the license anyway.
+                    </p>
+                </div>
+
                 {/* Absolute chaotic headline */}
                 <h1 className="text-4xl md:text-6xl font-black text-red-600 mb-6 uppercase leading-tight tracking-tighter">
                     <span className="bg-yellow-300">ATTENTION DEVELOPERS:</span><br />
