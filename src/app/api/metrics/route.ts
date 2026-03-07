@@ -7,14 +7,16 @@ export async function GET() {
     try {
         // Query pageviews
         const { data: pageviews } = await supabaseAdmin
-            .from('stunt_metrics')
-            .select('variant')
+            .from('tracking_events')
+            .select('variant_id')
+            .eq('site_key', 'duck')
             .eq('event_type', 'pageview');
 
         // Query checkouts
         const { data: checkouts } = await supabaseAdmin
-            .from('stunt_metrics')
-            .select('variant')
+            .from('tracking_events')
+            .select('variant_id')
+            .eq('site_key', 'duck')
             .eq('event_type', 'checkout_click');
 
         let trafficA = 0;
@@ -24,14 +26,14 @@ export async function GET() {
 
         // Parse pageviews
         if (pageviews) {
-            trafficA = pageviews.filter(p => p.variant === 'ugly').length;
-            trafficB = pageviews.filter(p => p.variant === 'pretty').length;
+            trafficA = pageviews.filter(p => p.variant_id === 'ugly').length;
+            trafficB = pageviews.filter(p => p.variant_id === 'pretty').length;
         }
 
         // Parse checkouts ($5 each)
         if (checkouts) {
-            revenueA = checkouts.filter(c => c.variant === 'ugly').length * 5;
-            revenueB = checkouts.filter(c => c.variant === 'pretty').length * 5;
+            revenueA = checkouts.filter(c => c.variant_id === 'ugly').length * 5;
+            revenueB = checkouts.filter(c => c.variant_id === 'pretty').length * 5;
         }
 
         // Calculate Bayesian Confidence mathematically (Beta distribution approximation)

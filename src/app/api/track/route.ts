@@ -12,10 +12,11 @@ export async function POST(req: Request) {
         }
 
         const { error } = await supabaseAdmin
-            .from('stunt_metrics')
+            .from('tracking_events')
             .insert({
-                event_type: event,
-                variant: variant
+                site_key: 'duck',
+                event_type: event, // 'pageview' or 'checkout_click'
+                variant_id: variant // 'champion' or 'challenger', or 'ugly'/'pretty'
             });
 
         if (error) {
