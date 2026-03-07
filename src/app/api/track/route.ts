@@ -11,10 +11,14 @@ export async function POST(req: Request) {
             return NextResponse.json({ error: 'Missing event or variant payload' }, { status: 400 });
         }
 
+        const pseudoId = `duck_${Math.random().toString(36).substring(7)}`;
+
         const { error } = await supabaseAdmin
             .from('tracking_events')
             .insert({
                 site_key: 'duck',
+                session_id: pseudoId,
+                visitor_id: pseudoId,
                 event_type: event, // 'pageview' or 'checkout_click'
                 variant_id: variant // 'champion' or 'challenger', or 'ugly'/'pretty'
             });
