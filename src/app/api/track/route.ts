@@ -5,7 +5,7 @@ export const dynamic = 'force-dynamic';
 
 export async function POST(req: Request) {
     try {
-        const { event, variant } = await req.json();
+        const { event, variant, params } = await req.json();
 
         if (!event || !variant) {
             return NextResponse.json({ error: 'Missing event or variant payload' }, { status: 400 });
@@ -20,7 +20,8 @@ export async function POST(req: Request) {
                 session_id: pseudoId,
                 visitor_id: pseudoId,
                 event_type: event, // 'pageview' or 'checkout_click'
-                variant_id: variant // 'champion' or 'challenger', or 'ugly'/'pretty'
+                variant_id: variant, // 'champion' or 'challenger', or 'ugly'/'pretty'
+                metadata: { url_params: params }
             });
 
         if (error) {
@@ -46,7 +47,8 @@ export async function POST(req: Request) {
                     variant_id: variant, // we are passing 'champion'/'challenger' currently
                     visitor_id: visitorId,
                     event: event === 'pageview' ? 'impression' : 'conversion',
-                    value: event === 'checkout_click' ? 5 : 0 // $5 license
+                    value: event === 'checkout_click' ? 5 : 0, // $5 license
+                    metadata: { url_params: params }
                 })
             }).catch(e => console.error('Headless proxy failed', e));
         }

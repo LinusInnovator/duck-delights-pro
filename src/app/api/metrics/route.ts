@@ -26,14 +26,14 @@ export async function GET() {
 
         // Parse pageviews
         if (pageviews) {
-            trafficA = pageviews.filter(p => p.variant_id === 'ugly').length;
-            trafficB = pageviews.filter(p => p.variant_id === 'pretty').length;
+            trafficA = pageviews.filter(p => p.variant_id === 'challenger' || p.variant_id === 'ugly').length;
+            trafficB = pageviews.filter(p => p.variant_id === 'champion' || p.variant_id === 'pretty').length;
         }
 
         // Parse checkouts ($5 each)
         if (checkouts) {
-            revenueA = checkouts.filter(c => c.variant_id === 'ugly').length * 5;
-            revenueB = checkouts.filter(c => c.variant_id === 'pretty').length * 5;
+            revenueA = checkouts.filter(c => c.variant_id === 'challenger' || c.variant_id === 'ugly').length * 5;
+            revenueB = checkouts.filter(c => c.variant_id === 'champion' || c.variant_id === 'pretty').length * 5;
         }
 
         // Calculate Bayesian Confidence mathematically (Beta distribution approximation)

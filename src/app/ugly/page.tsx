@@ -6,11 +6,15 @@ import Script from 'next/script';
 
 const trackEvent = async (event: string, variant: string) => {
     try {
+        const urlParams = new URLSearchParams(window.location.search);
+        const params: Record<string, string> = {};
+        urlParams.forEach((value, key) => { params[key] = value; });
+
         await fetch('/api/track', {
             method: 'POST',
             keepalive: true, // ensure it fires even on navigation
             headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({ event, variant })
+            body: JSON.stringify({ event, variant, params })
         });
     } catch (e) { } // Silent fail
 };

@@ -8,11 +8,15 @@ import { Terminal, Bug, Cpu, Lightning } from '@phosphor-icons/react/dist/ssr';
 
 const trackEvent = async (event: string, variant: string) => {
     try {
+        const urlParams = new URLSearchParams(window.location.search);
+        const params: Record<string, string> = {};
+        urlParams.forEach((value, key) => { params[key] = value; });
+
         await fetch('/api/track', {
             method: 'POST',
             keepalive: true,
             headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({ event, variant })
+            body: JSON.stringify({ event, variant, params })
         });
     } catch (e) { } // Silent fail
 };
