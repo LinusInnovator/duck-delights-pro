@@ -9,10 +9,15 @@ const openai = createOpenAI({
     apiKey: process.env.OPENROUTER_API_KEY,
 });
 
-const router = new IntelligenceRouter({
-    apiKey: process.env.INTERNAL_GOD_KEY || '',
-    baseUrl: process.env.MODEL_DELIGHTS_BASE_URL || 'https://model.delights.pro'
-});
+let router: IntelligenceRouter | null = null;
+try {
+    router = new IntelligenceRouter({
+        apiKey: process.env.INTERNAL_GOD_KEY || '',
+        baseUrl: process.env.MODEL_DELIGHTS_BASE_URL || 'https://model.delights.pro'
+    });
+} catch (e) {
+    console.warn("Failed to initialize Snell router at build time:", e);
+}
 
 export const maxDuration = 30;
 
