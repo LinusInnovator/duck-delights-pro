@@ -2,12 +2,17 @@ import { createOpenAI } from '@ai-sdk/openai';
 import { streamText } from 'ai';
 import { promises as fs } from 'fs';
 import path from 'path';
+import { IntelligenceRouter } from 'model-delights-snell';
 
 const openai = createOpenAI({
     baseURL: 'https://openrouter.ai/api/v1',
     apiKey: process.env.OPENROUTER_API_KEY,
 });
 
+const router = new IntelligenceRouter({
+    apiKey: process.env.INTERNAL_GOD_KEY || '',
+    baseUrl: process.env.MODEL_DELIGHTS_BASE_URL || 'https://model.delights.pro'
+});
 
 export const maxDuration = 30;
 
@@ -26,19 +31,27 @@ export async function POST(req: Request) {
 End every single response with an exasperated quack or sigh.`;
     SYSTEM_PROMPT = SYSTEM_PROMPT + '\n\n' + upsellPrompt;
 
-    // OpenRouter natively supports model fallbacks via comma-separated strings!
-    // It will attempt these models in order. If one fails or goes offline, 
-    // it seamlessly auto-routes to the next one with zero latency penalty for us.
-    const FREE_FALLBACK_ROUTER = [
-        'meta-llama/llama-3.3-70b-instruct:free',
-        'google/gemma-3-27b-it:free',
-        'qwen/qwen3-coder:free',
-        'mistralai/mistral-small-3.1-24b-instruct:free',
-        'openrouter/free' // Final absolute fallback that auto-picks any active free model
-    ].join(',');
+    // Dynamic Snell Routing logic for chat
+    let modelToUse = "meta-llama/llama-3.3-70b-instruct:free";
+    try {
+        const routingData = await router.getTopModel('conversational');
+        const bestModel = routingData.smart_value ? routingData.smart_value.model : routingData.flagship.model;
+        const fallbacks = routingData.fallback_array || [];
+        
+        // OpenRouter natively supports model fallbacks via comma-separated strings!
+        // It will attempt these models in order.
+        modelToUse = [bestModel, ...fallbacks, 'openrouter/free'].join(',');
+    } catch (error) {
+        console.error("SDK Routing Failed:", error);
+        modelToUse = [
+            'meta-llama/llama-3.3-70b-instruct:free',
+            'google/gemma-3-27b-it:free',
+            'openrouter/free'
+        ].join(',');
+    }
 
     const result = streamText({
-        model: openai(FREE_FALLBACK_ROUTER),
+        model: openai(modelToUse),
         system: SYSTEM_PROMPT,
         messages: messages,
     });
