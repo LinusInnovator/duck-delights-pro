@@ -39,6 +39,7 @@ End every single response with an exasperated quack or sigh.`;
     // Dynamic Snell Routing logic for chat
     let modelToUse = "meta-llama/llama-3.3-70b-instruct:free";
     try {
+        if (!router) throw new Error("Router not initialized");
         const routingData = await router.getTopModel('conversational');
         const bestModel = routingData.smart_value ? routingData.smart_value.model : routingData.flagship.model;
         const fallbacks = routingData.fallback_array || [];
